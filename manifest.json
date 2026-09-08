@@ -1,0 +1,24 @@
+{
+  "manifest_version": 3,
+  "name": "Auto Paste to Google Lens",
+  "version": "1.0",
+  "description": "Automatically pastes the last image from clipboard into Google Lens",
+  "permissions": ["clipboardRead", "activeTab", "storage"],
+  "host_permissions": [
+    "https://www.google.com/*",
+    "https://lens.google.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.google.com/*",
+        "https://lens.google.com/*"
+      ],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
